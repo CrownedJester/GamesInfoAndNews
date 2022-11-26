@@ -12,7 +12,9 @@ class GamesDataManager(private val api: GamesDataApi) : GamesDataRepository {
         platform: String,
         category: String,
         sortBy: String
-    ): List<GameBaseData> = api.retrieveGamesBaseData(platform, category, sortBy)
+    ): List<GameBaseData> = api.retrieveGamesBaseData(
+        platform, category, sortBy
+    )
 
     override suspend fun retrieveGamesBaseDataByFilter(
         tag: String,

@@ -4,10 +4,18 @@ import com.crownedjester.soft.gamesinfoandnews.data.data_source.GamesDataApi
 import com.crownedjester.soft.gamesinfoandnews.data.data_source.createClient
 import com.crownedjester.soft.gamesinfoandnews.domain.repository.GamesDataManager
 import com.crownedjester.soft.gamesinfoandnews.domain.repository.GamesDataRepository
+import com.crownedjester.soft.gamesinfoandnews.domain.use_cases.RetrieveGamesBaseData
+import com.crownedjester.soft.gamesinfoandnews.representation.games_screen.viewmodel.GamesViewModel
+import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+val viewModelModule = module {
+
+    viewModelOf(::GamesViewModel)
+
+}
 
 val restModule = module {
     single<Retrofit> {
@@ -34,6 +42,12 @@ val repositoryModule = module {
 
 
 val useCasesModule = module {
+
+    scope<GamesViewModel> {
+        scoped {
+            RetrieveGamesBaseData(get())
+        }
+    }
 
 }
 

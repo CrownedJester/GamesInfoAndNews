@@ -26,9 +26,9 @@ interface GamesDataApi {
 
     @GET("games")
     suspend fun retrieveGamesBaseData(
-        @Query("platform") platform: String = PLATFORMS_LIST.first { it == "all" },
-        @Query("category") category: String = "", //tag
-        @Query("sort-by") sortBy: String = SORT_TYPES.first { it == "alphabetical" },
+        @Query("platform") platform: String,
+        @Query("category") category: String,
+        @Query("sort-by") sortBy: String,
     ): List<GameBaseData>
 
     @GET("filter")
@@ -54,7 +54,7 @@ interface GamesDataApi {
 
 fun createClient(): OkHttpClient {
     val interceptor = HttpLoggingInterceptor()
-    interceptor.level = HttpLoggingInterceptor.Level.BODY
+    interceptor.level = HttpLoggingInterceptor.Level.BASIC
 
     return OkHttpClient().newBuilder()
         .addInterceptor(interceptor)
