@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginBottom="12dp"
+    android:elevation="8dp"
+    android:paddingVertical="8dp"
+    app:cardCornerRadius="12dp"
+    app:contentPaddingBottom="12dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_thumb_logo"
+            android:layout_width="match_parent"
+            android:layout_height="156dp"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_game_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textAlignment="viewStart"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_thumb_logo" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="12dp"
+            android:elevation="3dp"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="3dp"
+            app:cardBackgroundColor="#D1C4E9"
+            app:cardCornerRadius="12dp"
+            app:layout_constraintBottom_toBottomOf="@id/iv_thumb_logo"
+            app:layout_constraintStart_toStartOf="@id/iv_thumb_logo">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_game_genre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="2dp"
+                android:padding="4dp"
+                android:shadowColor="@color/black"
+                android:text="Shooter"
+                android:textColor="@color/white" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_game_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="12dp"
+            android:textColor="#BEBCBC"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="@id/tv_game_title"
+            app:layout_constraintStart_toStartOf="@id/tv_game_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_game_title" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_game_developer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
+            android:text="Activision"
+            android:textAlignment="viewEnd"
+            android:textStyle="italic|bold"
+            app:layout_constraintEnd_toEndOf="@id/tv_game_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_game_description" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
