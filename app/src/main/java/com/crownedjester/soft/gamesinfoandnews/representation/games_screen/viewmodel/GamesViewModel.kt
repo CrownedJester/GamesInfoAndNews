@@ -6,10 +6,13 @@ import com.crownedjester.soft.gamesinfoandnews.common.Response
 import com.crownedjester.soft.gamesinfoandnews.data.model.dto.GameBaseData
 import com.crownedjester.soft.gamesinfoandnews.domain.use_cases.RetrieveGamesBaseData
 import com.crownedjester.soft.gamesinfoandnews.representation.common.RemoteDataState
+import com.crownedjester.soft.gamesinfoandnews.representation.common.UiEvent
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.receiveAsFlow
 import org.koin.core.component.KoinScopeComponent
 import org.koin.core.component.createScope
 import org.koin.core.component.inject
@@ -24,6 +27,9 @@ class GamesViewModel() : ViewModel(), KoinScopeComponent {
     private val _gamesDataStateFlow =
         MutableStateFlow<RemoteDataState<List<GameBaseData>>>(RemoteDataState())
     val gamesDataStateFlow get() = _gamesDataStateFlow.asStateFlow()
+
+    private val _uiEvent = Channel<UiEvent>()
+    val uiEvent = _uiEvent.receiveAsFlow()
 
     init {
         retrieveGamesData()

@@ -5,6 +5,7 @@ import com.crownedjester.soft.gamesinfoandnews.data.data_source.createClient
 import com.crownedjester.soft.gamesinfoandnews.domain.repository.GamesDataManager
 import com.crownedjester.soft.gamesinfoandnews.domain.repository.GamesDataRepository
 import com.crownedjester.soft.gamesinfoandnews.domain.use_cases.RetrieveGamesBaseData
+import com.crownedjester.soft.gamesinfoandnews.representation.SharedViewModel
 import com.crownedjester.soft.gamesinfoandnews.representation.games_screen.viewmodel.GamesViewModel
 import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.dsl.module
@@ -15,6 +16,7 @@ val viewModelModule = module {
 
     viewModelOf(::GamesViewModel)
 
+    viewModelOf(::SharedViewModel)
 }
 
 val restModule = module {
