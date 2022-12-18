@@ -11,7 +11,8 @@ import coil.transform.RoundedCornersTransformation
 import com.crownedjester.soft.gamesinfoandnews.data.model.dto.GameBaseData
 import com.crownedjester.soft.gamesinfoandnews.databinding.ItemGameBinding
 
-class GamesAdapter : RecyclerView.Adapter<GamesAdapter.GamesViewHolder>() {
+class GamesAdapter(private val adapterCallback: AdapterCallback) :
+    RecyclerView.Adapter<GamesAdapter.GamesViewHolder>() {
 
     private val callback = object : ItemCallback<GameBaseData>() {
 
@@ -63,6 +64,10 @@ class GamesAdapter : RecyclerView.Adapter<GamesAdapter.GamesViewHolder>() {
         val gameData = differ.currentList[position]
 
         holder.bind(gameData)
+
+        holder.itemView.setOnClickListener {
+            adapterCallback.onItemClick(gameData.id)
+        }
     }
 
 }

@@ -25,4 +25,22 @@ data class GameFullData(
     val requirements: GameRequirements,
     val screenshots: List<Screenshot>
 
-)
+) {
+
+    companion object {
+        fun setupLogoWithScreenshots(container: List<Screenshot>, value: Screenshot) =
+            with(mutableListOf<Screenshot>()) {
+
+                add(value)
+
+                container.forEach {
+                    add(it)
+                }
+
+                toList()
+            }
+
+    }
+
+}
+

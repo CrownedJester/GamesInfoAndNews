@@ -10,18 +10,20 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.crownedjester.soft.gamesinfoandnews.R
 import com.crownedjester.soft.gamesinfoandnews.databinding.FragmentGamesDashboardBinding
 import com.crownedjester.soft.gamesinfoandnews.representation.SharedViewModel
+import com.crownedjester.soft.gamesinfoandnews.representation.common.UiEvent
+import com.crownedjester.soft.gamesinfoandnews.representation.games_screen.adapter.AdapterCallback
 import com.crownedjester.soft.gamesinfoandnews.representation.games_screen.adapter.GamesAdapter
 import com.crownedjester.soft.gamesinfoandnews.representation.games_screen.viewmodel.GamesViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class GamesDashboardFragment : Fragment(R.layout.fragment_games_dashboard) {
+class GamesDashboardFragment : Fragment(R.layout.fragment_games_dashboard), AdapterCallback {
 
     private var _binding: FragmentGamesDashboardBinding? = null
     private val binding get() = _binding!!
 
-    private val adapter = GamesAdapter()
+    private val adapter = GamesAdapter(this)
 
     private val gamesViewModel: GamesViewModel by viewModel()
     private val sharedViewModel by activityViewModels<SharedViewModel>()
@@ -56,6 +58,15 @@ class GamesDashboardFragment : Fragment(R.layout.fragment_games_dashboard) {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    override fun onItemClick(id: Int) {
+        sharedViewModel.sendEvent(
+            UiEvent.OnNavigate(
+                R.id.action_gamesDashboardFragment_to_gameDetailFragment,
+                id
+            )
+        )
     }
 
 }
