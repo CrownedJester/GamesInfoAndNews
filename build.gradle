@@ -3,6 +3,7 @@ buildscript {
     ext {
         coroutines_version = "1.6.4"
         koin_version = "3.2.2"
+        koin_android_version = "3.3.0"
         coil_version = '2.2.2'
         navigation_version = "2.5.3"
         retrofit_version = "2.9.0"

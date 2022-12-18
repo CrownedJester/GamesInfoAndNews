@@ -64,8 +64,8 @@ dependencies {
 
     // Koin Core features
     implementation "io.insert-koin:koin-core:$koin_version"
-    implementation "io.insert-koin:koin-android:$koin_version"
-    implementation "io.insert-koin:koin-androidx-navigation:$koin_version"
+    implementation "io.insert-koin:koin-android:$koin_android_version"
+    implementation "io.insert-koin:koin-androidx-navigation:$koin_android_version"
 
     //Coil
     implementation "io.coil-kt:coil:$coil_version"
